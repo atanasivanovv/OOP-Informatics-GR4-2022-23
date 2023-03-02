@@ -1,80 +1,41 @@
 #include <iostream>
 #include <cstring>
 
-void strtrim(char* str) {
-    int count = 0;
-    for (size_t i = 0; str[i] != '\0'; i++) {
-        if(str[i] != ' ' || (str[i] == ' ' && str[i - 1] != ' ')) {
-            str[count++] = str[i];
-        }
+void resizeArray(int *& arr, int &size, int &capacity) {
+    capacity *= 2;
+    int* biggerArray = new int[capacity];
+
+    for (int i = 0; i < size; i++) {
+        biggerArray[i] = arr[i];
     }
 
-    str[count - 1] = '\0';
+    delete [] arr;
+    arr = biggerArray;
 }
 
-char getUpperCase(char symbol) {
-    if (symbol >= 'a' && symbol <= 'z') {
-        return symbol -= 32;
+void pushBack(int *& arr, int &size, int &capacity, int newElement) {
+    if (size == capacity) {
+        resizeArray(arr, size, capacity);
     }
-
-    return symbol;
+    arr[size++] = newElement;
 }
 
-bool areSymbolsEqual(char firstSymbol, char secondSymbol) {
-    return getUpperCase(firstSymbol) == getUpperCase(secondSymbol);
-}
-
-bool areEqual(char* firstStr, char* secondStr) {
-    bool areNotEqual = *firstStr == '\0' && *secondStr != '\0' ||
-            *secondStr == '\0' && *firstStr != '\0' || 
-            !areSymbolsEqual(*firstStr, *secondStr);
-
-    if (areNotEqual) { 
-        return false;
+void pushFront(int *& arr, int &size, int &capacity, int newElement) {
+    if (size == capacity) {
+        resizeArray(arr, size, capacity);
     }
-
-    bool canEnd = *firstStr == '\0' && *secondStr == '\0';
- 
-    return canEnd || areEqual(firstStr + 1, secondStr + 1);
+    // {1 2, _}
+    // shift elements 1 to right {1, 1, 2}
+    // insert at index 0 new element {<new element>, 1, 2}
+    size++;
 }
 
-void printArr(int* arr, int size) {
+void printArray(const int size, const int* arr) {
     for (size_t i = 0; i < size; i++) {
         std::cout << arr[i] << " ";
     }
 }
 
-void resizeArray(int *&arr, int sizeOfArray) {
-    int* resizedArray = new int[sizeOfArray * 2];
 
-    for (size_t i = 0; i < sizeOfArray; i++) {
-        resizedArray[i] = arr[i];
-    }
-    delete [] arr;
-    arr = resizedArray;
-}
-
-void pushBack(int *&arr, int& sizeOfArr, int capacity, int element) {
-    if (sizeOfArr == capacity) {
-        resizeArray(arr, sizeOfArr);
-    }
-    arr[sizeOfArr++] = element;
-}
-
-void pushFront(int *&arr, int& sizeOfArr, int capacity, int element) {
-    if (sizeOfArr == capacity) {
-        resizeArray(arr, sizeOfArr);
-    }
-
-    for (size_t i = sizeOfArr + 1; i > 0; i--) {
-        arr[i] = arr[i - 1];
-    }
-
-    sizeOfArr++;
-    arr[0] = element;
-}
-
-int main() {
-    test1.x = 666;
-    test1.printX();
+int main() {   
 }
