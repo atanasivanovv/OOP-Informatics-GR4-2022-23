@@ -45,4 +45,4 @@
 
 - `void writeBookstoreBinary(const char* fileName, const char* binFileName)`, която прочита записаните книги в библиотеката от файла `fileName` (текстов) и записва прочетените данни в **бинарен** файл `binFileName`.
 
-- `void readBookstoreBinary(const char* binFileName, const char* txtFileName)`, която прочита записаните книги в библиотеката от файла `fileName` (бинарен) и записва прочетените данни в обратно в нов текстов файл .
+- `void readBookstoreBinary(const char* binFileName, const char* txtFileName)`, която прочита записаните книги в библиотеката от файла `fileName` (бинарен) и записва прочетените данни в обратно в нов текстов файл `txtFileName`.
