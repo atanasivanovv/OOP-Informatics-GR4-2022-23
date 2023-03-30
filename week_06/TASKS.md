@@ -1,3 +1,6 @@
+## Tasks to make life easier
+- Implement Vector (a class representing dynamic array) (aka Task 4)
+- Implement String (a class representing dynamic char array)
 ## Task 1
 
 Напишете програма, която моделира магазин със стоки. (class `Store`).
