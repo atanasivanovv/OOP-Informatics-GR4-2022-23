@@ -5,3 +5,6 @@
 
 ## Task 2 
 ### Напишете клас StringCollection състоящ се от String* strings (колекция от елементи от тип String), int size (брой елементи в strings). Имплементирайте голяма четворка, operator << и operator >>, които записват / четат в / от файл всички елементи в strings
+
+## Task 3
+### Имплементирайте move semantics за класовете в Task 1 и Task 2
