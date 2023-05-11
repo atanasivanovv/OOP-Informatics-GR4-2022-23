@@ -1,6 +1,6 @@
 #pragma once
 #include <iostream>
-
+#include <iterator>
 class Vector {
 private:
     size_t capacity;
@@ -13,8 +13,12 @@ private:
 public:
     Vector();
     Vector(const Vector&);
+    Vector(const int*, int);
+    Vector(Vector&&);
     Vector& operator=(const Vector&);
     ~Vector();
+public:
+    void printVector() const;
 public:
     int& operator[](int index);
     // const int& operator[](int index) const;

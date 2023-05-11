@@ -30,7 +30,31 @@ Vector::Vector() : capacity(8), size(0), data(new int[8]) {
     std::cout << "Hello new Vector!" << std::endl;
 }
 
+Vector::Vector(const int* someData, int size) {
+    this->capacity = size * 2;
+    this->size = 0;
+    this->data = new int[size * 2];
+
+    for (size_t i = 0; i < size; i++) {
+        int newElement = someData[i];
+        this->data[this->size++] = someData[i];
+    }
+}
+
+Vector::Vector(Vector&& other) {
+    std::cout << "MOVED!\n";
+    this->capacity = other.capacity;
+    this->size = other.size;
+    this->data = other.data; // assigning the pointer!
+
+    // clean other instance (create hollow object)
+    other.data = nullptr;
+    other.size = 0;
+    other.capacity = 0;
+}
+
 Vector::Vector(const Vector& other) {
+    std::cout << "COPIED!\n";
     copy(other);
 }
 
@@ -53,6 +77,15 @@ void Vector::pushBack(int newElement) {
     }
 
     data[size++] = newElement;
+}
+
+void Vector::printVector() const {
+    std::cout << "[";
+    for (size_t i = 0; i < size; i++) {
+        std::cout << this->data[i] << " ";
+    }   
+    std::cout << "\b]";
+    std::cout << std::endl;
 }
 
 int& Vector::operator[](int index) {

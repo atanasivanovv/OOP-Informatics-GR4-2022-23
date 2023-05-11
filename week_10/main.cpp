@@ -1,4 +1,5 @@
-#include "vector/Vector.h"
+#include "Vector.h"
+#include "VectorComp.h"
 
 int main()
 {
@@ -19,5 +20,5 @@ int main()
         std::cout << "THERE WAS AN ERROR BUT PROGRAM STILL WORKING!";
     }
 
-    // Implement String as well :)
+    // // Implement String as well :)
 }
